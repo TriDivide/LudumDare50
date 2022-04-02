@@ -13,6 +13,10 @@ public class ZombieController : MonoBehaviour {
     public Rigidbody2D rigidBody; 
     public float stationaryDuration = 1f;
 
+    public bool isCarryingEquipment = false;
+
+    public GameObject equipment;
+
 
 
     void Start() {
@@ -77,8 +81,21 @@ public class ZombieController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.GetType() == typeof(BoxCollider2D) && collision.collider.gameObject.tag == "Bullet") {
+            if(isCarryingEquipment && equipment != null) {
+                Instantiate(equipment, this.gameObject.transform);
+            }
             Destroy(gameObject);
             Destroy(collision.collider.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (!isCarryingEquipment) {
+            if (collision.GetType() == typeof(CircleCollider2D) && collision.gameObject.tag == "Equipment") {
+                this.equipment = collision.gameObject;
+                Destroy(collision.gameObject);
+                isCarryingEquipment = true;
+            }
         }
     }
 
