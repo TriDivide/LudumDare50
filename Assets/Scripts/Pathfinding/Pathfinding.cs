@@ -44,6 +44,8 @@ public class Pathfinding {
                 return CalculatePath(endNode);
             }
         }
+    private PathNode GetNode(int x, int y) {
+        return grid.GetGridObject(x, y);
     }
 
     private List<PathNode> CalculatePath(PathNode endNode) {
