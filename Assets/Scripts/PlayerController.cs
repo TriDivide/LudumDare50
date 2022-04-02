@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 
     public Camera sceneCamera;
     public Rigidbody2D rigidBody;
+    public Weapon weapon;
+
 
     private Vector2 mousePosition;
 
@@ -30,6 +32,9 @@ public class PlayerController : MonoBehaviour {
     void ProcessInputs() {
         mousePosition = sceneCamera.ScreenToWorldPoint(Input.mousePosition);
 
+        if (Input.GetMouseButtonDown(0)) {
+            weapon.Fire();
+        }
     }
 
     void Move() {
