@@ -57,6 +57,14 @@ public class Grid<TGridObject> {
         return new Vector3(x, y) * cellSize + originPosition;
     }
 
+    public int GetWidth() {
+        return width;
+    }
+
+    public int GetHeight() {
+        return height;
+    }
+
     public void SetGridObject(int x, int y, TGridObject value) {
         if (x >= 0 && y >= 0 && x < width && y < height) {
             gridArray[x, y] = value;
