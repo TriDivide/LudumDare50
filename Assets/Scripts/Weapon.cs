@@ -7,9 +7,12 @@ public class Weapon : MonoBehaviour {
     public GameObject bullet;
     public Transform firepoint;
 
+    public float fireForce;
+
 
     public void Fire() {
-        Instantiate(bullet, firepoint.position, firepoint.rotation);
+        GameObject projectile = Instantiate(bullet, firepoint.position, firepoint.rotation);
+        projectile.GetComponent<Rigidbody2D>().AddForce(firepoint.up * fireForce, ForceMode2D.Impulse);
     }
 
 }
