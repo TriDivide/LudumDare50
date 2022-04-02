@@ -15,11 +15,15 @@ public class PathNode : MonoBehaviour {
 
     public Guid uuid;
 
+    public bool isWalkable;
     public PathNode cameFromNode;
+
     public PathNode(Grid<PathNode> grid, int x, int y) {
         this.grid = grid;
         this.x = x;
         this.y = y;
+
+        isWalkable = true;
 
         this.uuid = System.Guid.NewGuid();
     }
@@ -27,7 +31,12 @@ public class PathNode : MonoBehaviour {
     public override string ToString() {
         return x + "," + y;
     }
-    
+
+    public void SetIsWalkable(bool isWalkable) {
+        this.isWalkable = isWalkable;
+        grid.TriggerGridObjectChanged(x, y);
+    }
+
     public void CalculateFCost() {
         fCost = gCost + hCost;
     }

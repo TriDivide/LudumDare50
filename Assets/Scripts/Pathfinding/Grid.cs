@@ -64,6 +64,9 @@ public class Grid<TGridObject> {
     public int GetHeight() {
         return height;
     }
+    public float GetCellSize() {
+        return cellSize;
+    }
 
     public void SetGridObject(int x, int y, TGridObject value) {
         if (x >= 0 && y >= 0 && x < width && y < height) {
