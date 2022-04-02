@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spawner
   - Bullet
+  - Ammo
   layers:
   - Default
   - TransparentFX
