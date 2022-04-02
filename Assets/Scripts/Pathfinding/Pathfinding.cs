@@ -14,7 +14,7 @@ public class Pathfinding {
         grid = new Grid<PathNode>(width, height, 10f, Vector3.zero, (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
     }
 
-    private List<PathNode> FindPath(int startX, int startY, int endX, int endY) {
+    public List<PathNode> FindPath(int startX, int startY, int endX, int endY) {
         PathNode startNode = grid.GetGridObject(startX, startY);
         PathNode endNode = grid.GetGridObject(endX, endY);
         openList = new List<PathNode> { startNode };
@@ -38,16 +38,19 @@ public class Pathfinding {
         while (openList.Count > 0) {
             PathNode currentNode = GetLowestFCostNode(openList);
 
-            if(currentNode == endNode) {
+            Debug.Log(currentNode.uuid == endNode.uuid);
+
+            if (currentNode.uuid == endNode.uuid) {
                 // We have reached the final node!
                 return CalculatePath(endNode);
             }
 
+
             openList.Remove(currentNode);
             closedList.Add(currentNode);
-
             foreach ( PathNode neighbourNode in GetNeighbourList(currentNode)) {
                 if (closedList.Contains(neighbourNode)) { continue; }
+                Debug.Log("Contains neighbourNode");
 
                 int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
                 if (tentativeGCost < neighbourNode.gCost) {
@@ -63,6 +66,7 @@ public class Pathfinding {
             }
         }
 
+        Debug.Log("Path is impossible");
         // Out of nodes on the open list
         return null;
     }
@@ -99,6 +103,9 @@ public class Pathfinding {
         return neighbourList;
     }
 
+    public Grid<PathNode> GetGrid() {
+        return grid;
+    }
     private PathNode GetNode(int x, int y) {
         return grid.GetGridObject(x, y);
     }
