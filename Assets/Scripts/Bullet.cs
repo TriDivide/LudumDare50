@@ -16,4 +16,10 @@ public class Bullet : MonoBehaviour {
     void Despawn() {
         Destroy(gameObject);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.gameObject.tag != "Weapon") {
+            Destroy(gameObject);
+        }
+    }
 }

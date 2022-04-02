@@ -55,20 +55,21 @@ public class PlayerController : MonoBehaviour {
 
     void Move() {
         
-        //Moving the player.
+        // move the player
         rigidBody.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
 
-        // Aiming the weapon
+        // rotate the player
         Vector2 aimDirection = mousePosition - rigidBody.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-       
-        if (projectileOrigin != null) {
-            projectileOrigin.GetComponent<Rigidbody2D>().rotation = aimAngle;
-            projectileOrigin.GetComponent<Rigidbody2D>().velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
 
+        rigidBody.rotation = aimAngle;
 
-        }
+        Vector3 cameraPosition = sceneCamera.transform.position;
 
+        float cameraZ = cameraPosition.z;
+        Vector3 playerPosition = gameObject.transform.position;
+
+        sceneCamera.transform.position = new Vector3(playerPosition.x, playerPosition.y, cameraPosition.z);
 
     }
 }

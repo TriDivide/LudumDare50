@@ -11,7 +11,8 @@ public class Weapon : MonoBehaviour {
 
 
     public void Fire() {
-        GameObject projectile = Instantiate(bullet, firepoint.position, firepoint.rotation);
+        Vector3 origin = firepoint.position;
+        GameObject projectile = Instantiate(bullet, origin, firepoint.rotation);
         projectile.GetComponent<Rigidbody2D>().AddForce(firepoint.up * fireForce, ForceMode2D.Impulse);
     }
 
