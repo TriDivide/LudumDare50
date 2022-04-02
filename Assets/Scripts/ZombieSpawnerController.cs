@@ -7,12 +7,12 @@ public class ZombieSpawnerController : MonoBehaviour
 
     private GameObject[] spawners;
     public GameObject zombie;
-
+    public float spawnDelay = 10f;
     // Start is called before the first frame update
     void Start() {
         this.spawners = GameObject.FindGameObjectsWithTag("Spawner");
 
-        InvokeRepeating("SpawnZombie", 0f, 10f);
+        InvokeRepeating("SpawnZombie", 0f, spawnDelay);
 
     }
 

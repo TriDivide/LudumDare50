@@ -75,6 +75,13 @@ public class ZombieController : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.GetType() == typeof(BoxCollider2D) && collision.collider.gameObject.tag == "Bullet") {
+            Destroy(gameObject);
+            Destroy(collision.collider.gameObject);
+        }
+    }
+
 }
 
 enum Direction {
