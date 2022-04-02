@@ -45,6 +45,17 @@ public class Grid {
         }
     }
 
+    private void GetXY(Vector3 worldPosition, out int x, out int y) {
+        x = Mathf.FloorToInt(worldPosition.x / cellSize);
+        y = Mathf.FloorToInt(worldPosition.y / cellSize);
+    }
+
+    public void SetValue(Vector3 worldPosition, int value) {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        SetValue(x, y, value);
+    }
+
     private TextMesh GenerateGridSquareText(string text, Transform parent = null, Vector3 localPosition = default(Vector3), int fontSize = 40) {
         GameObject t = new GameObject("World_Text", typeof(TextMesh));
         Transform transform = t.transform;

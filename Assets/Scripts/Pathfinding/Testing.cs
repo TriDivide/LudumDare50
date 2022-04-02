@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour {
 
+    private Grid grid;
+
     void Start() {
-        Grid grid = new Grid(4, 2, 10f);        
+        grid = new Grid(4, 2, 10f);        
     }
 
-   
+    private void Update() {
+        if (Input.GetMouseButtonDown("0")) {
+            grid.SetValue(GetMouseWorldPosition(), Random.Range(0, 10));
+        }
+    }
+
+    private Vector3 GetMouseWorldPosition() {
+        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        pos.z = 0;
+        return pos;
+    }
+
 }
