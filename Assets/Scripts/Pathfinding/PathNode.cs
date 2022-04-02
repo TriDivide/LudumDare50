@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PathNode : MonoBehaviour {
     
@@ -12,11 +13,15 @@ public class PathNode : MonoBehaviour {
     public int hCost;
     public int fCost;
 
+    public Guid uuid;
+
     public PathNode cameFromNode;
     public PathNode(Grid<PathNode> grid, int x, int y) {
         this.grid = grid;
         this.x = x;
         this.y = y;
+
+        this.uuid = System.Guid.NewGuid();
     }
 
     public override string ToString() {
