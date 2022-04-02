@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour {
     public Camera sceneCamera;
     public Rigidbody2D rigidBody;
     public Weapon weapon;
+    public float movementSpeed = 0f;
 
+    public GameObject projectileOrigin; 
 
     private Vector2 mousePosition;
-
+    private Vector2 moveDirection;
+    
 
 
 
@@ -30,7 +33,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     void ProcessInputs() {
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
+        moveDirection = new Vector2(moveX, moveY).normalized;
+
+        
         mousePosition = sceneCamera.ScreenToWorldPoint(Input.mousePosition);
+
 
         if (Input.GetMouseButtonDown(0)) {
             weapon.Fire();
@@ -38,10 +48,20 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Move() {
-        Vector2 aimDirection = mousePosition - rigidBody.position;
+        
+        //Moving the player.
+        rigidBody.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
 
+        // Aiming the weapon
+        Vector2 aimDirection = mousePosition - rigidBody.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-        rigidBody.rotation = aimAngle;
+       
+        if (projectileOrigin != null) {
+            projectileOrigin.GetComponent<Rigidbody2D>().rotation = aimAngle;
+            projectileOrigin.GetComponent<Rigidbody2D>().velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
+
+
+        }
 
 
     }
