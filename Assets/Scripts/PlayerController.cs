@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour {
     public Weapon weapon;
     public float movementSpeed = 0f;
 
-    public GameObject projectileOrigin; 
+    public GameObject projectileOrigin;
+    public WeaponManager weaponManager;
 
     private Vector2 mousePosition;
     private Vector2 moveDirection;
+
     
 
 
@@ -43,8 +45,12 @@ public class PlayerController : MonoBehaviour {
 
 
         if (Input.GetMouseButtonDown(0)) {
-            weapon.Fire();
+            if (weaponManager.ammoCount > 0) {
+                weapon.Fire();
+                weaponManager.removeAmmo(1);
+            }
         }
+
     }
 
     void Move() {
