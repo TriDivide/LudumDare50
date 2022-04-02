@@ -7,6 +7,10 @@ TagManager:
   - Spawner
   - Bullet
   - Ammo
+  - Weapon
+  - Equipment
+  - Room
+  - Zombie
   layers:
   - Default
   - TransparentFX

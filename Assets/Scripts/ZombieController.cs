@@ -82,19 +82,20 @@ public class ZombieController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.GetType() == typeof(BoxCollider2D) && collision.collider.gameObject.tag == "Bullet") {
             if(isCarryingEquipment && equipment != null) {
-                Instantiate(equipment, this.gameObject.transform);
+                print("instantiate");
+                GameObject _ = Instantiate(equipment, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, 0));
+                //Instantiate(equipment, this.gameObject.transform);
             }
+            Destroy(collision.collider.gameObject); 
             Destroy(gameObject);
-            Destroy(collision.collider.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (!isCarryingEquipment) {
             if (collision.GetType() == typeof(CircleCollider2D) && collision.gameObject.tag == "Equipment") {
-                this.equipment = collision.gameObject;
-                Destroy(collision.gameObject);
                 isCarryingEquipment = true;
+                Destroy(collision.gameObject);
             }
         }
     }
