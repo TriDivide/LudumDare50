@@ -14,7 +14,7 @@ public class PathNode : MonoBehaviour {
 
     public PathNode cameFromNode;
     public PathNode(Grid<PathNode> grid, int x, int y) {
-        this.grid = Grid;
+        this.grid = grid;
         this.x = x;
         this.y = y;
     }
