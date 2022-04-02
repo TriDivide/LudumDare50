@@ -55,6 +55,21 @@ public class Grid {
         GetXY(worldPosition, out x, out y);
         SetValue(x, y, value);
     }
+    
+    public int GetValue(int x, int y) {
+        if (x >= 0 && y >= 0 && x < width && y < height) {
+            return gridArray[x, y];
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public int GetValue(Vector3 worldPosition) {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        return GetValue(x, y);
+    }
 
     private TextMesh GenerateGridSquareText(string text, Transform parent = null, Vector3 localPosition = default(Vector3), int fontSize = 40) {
         GameObject t = new GameObject("World_Text", typeof(TextMesh));

@@ -11,8 +11,12 @@ public class Testing : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetMouseButtonDown("0")) {
+        if (Input.GetMouseButtonDown(0)) {
             grid.SetValue(GetMouseWorldPosition(), Random.Range(0, 10));
+        }
+
+        if (Input.GetMouseButtonDown(1)) {
+            Debug.Log(grid.GetValue(GetMouseWorldPosition()));
         }
     }
 
@@ -21,5 +25,7 @@ public class Testing : MonoBehaviour {
         pos.z = 0;
         return pos;
     }
+
+
 
 }
