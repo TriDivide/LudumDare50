@@ -45,7 +45,26 @@ public class Pathfinding {
 
             openList.Remove(currentNode);
             closedList.Add(currentNode);
+
+            foreach ( PathNode neighbourNode in GetNeighbourList(currentNode)) {
+                if (closedList.Contains(neighbourNode)) { continue; }
+
+                int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
+                if (tentativeGCost < neighbourNode.gCost) {
+                    neighbourNode.cameFromNode = currentNode;
+                    neighbourNode.gCost = tentativeGCost;
+                    neighbourNode.hCost = CalculateDistanceCost(neighbourNode, endNode);
+                    neighbourNode.CalculateFCost();
+
+                    if (!openList.Contains(neighbourNode)) {
+                        openList.Add(neighbourNode);
+                    }
+                }
+            }
         }
+
+        // Out of nodes on the open list
+        return null;
     }
 
     private List<PathNode> GetNeighbourList(PathNode currentNode) {
