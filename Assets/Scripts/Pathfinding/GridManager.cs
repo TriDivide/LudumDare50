@@ -9,15 +9,22 @@ public class GridManager : MonoBehaviour {
     [SerializeField]
     private int spawnX = -1, spawnY = -1;
 
+    [SerializeField]
+    private int gridSizeX = 10, gridSizeY = 10;
+
+    [SerializeField]
+    private float cellSize = 1f;
+
     public GameObject spawner;
 
     private bool hasSpawned = false;
 
     void Start() {
 
-        pathfinding = new Pathfinding(10, 10);
+        pathfinding = new Pathfinding(gridSizeX, gridSizeY, cellSize);
 
 
+        // Spawn Spawners
         if (spawnX > -1 && spawnY > -1) {
             Grid<PathNode> grid = pathfinding.GetGrid();
             PathNode[,] cells = grid.GetAllGridObjects();
