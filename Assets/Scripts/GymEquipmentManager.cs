@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RoomManager : MonoBehaviour {
+public class GymEquipmentManager: MonoBehaviour {
 
     private int totalEquipmentCount = 1;
 
@@ -24,8 +24,6 @@ public class RoomManager : MonoBehaviour {
 
         int currentEquipmentCount = GameObject.FindGameObjectsWithTag("Equipment").Length;
 
-        print(totalEquipmentCount);
-        print(zombieCount + currentEquipmentCount);
 
         if (totalEquipmentCount > zombieCount + currentEquipmentCount) {
             SceneManager.LoadScene("GameOver");

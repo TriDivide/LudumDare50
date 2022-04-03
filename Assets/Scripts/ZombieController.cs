@@ -75,11 +75,13 @@ public class ZombieController : MonoBehaviour {
         // interacted with a bullet.
         if (collision.GetType() == typeof(BoxCollider2D) && collision.gameObject.tag == "Bullet") {
             if (zombieHealth < 0) {
+                // Zombie is dead. 
                 if (isCarryingEquipment && equipment != null) {
                     GameObject _ = Instantiate(equipment, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, 0));
                 }
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
+                ScoreModel.Instance.SetScore(1);
             }
             else {
                 zombieHealth -= 6;

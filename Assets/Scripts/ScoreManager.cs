@@ -6,6 +6,12 @@ public class ScoreManager : MonoBehaviour {
 
     public Text scoreText;
 
+    private ScoreModel model;
+    ScoreManager() {
+        model = new ScoreModel();
+
+        ScoreModel.Instance.SetScore(0);
+    }
 
     // Start is called before the first frame update
     void Start() {

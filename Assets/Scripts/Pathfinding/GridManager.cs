@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomGenerationManager : MonoBehaviour {
+public class GridManager : MonoBehaviour {
 
     private Pathfinding pathfinding;
 
