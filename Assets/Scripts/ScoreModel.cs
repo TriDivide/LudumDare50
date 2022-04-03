@@ -12,12 +12,10 @@ public class ScoreModel {
     public ScoreModel() {
         Instance = this;
 
-      //  Debug.Log("Score has been set to 0");
         score = 0;
     }
 
     public void SetScore(int updatedScore) {
-       // Debug.Log("Set score to : " + updatedScore);
         score += updatedScore;
     }
 
