@@ -27,7 +27,7 @@ public class GridManager : MonoBehaviour {
                                                 new Coords(3,9), new Coords(4,9), new Coords(5,9), new Coords(6,9), new Coords(7,9)};
 
     private Coords[] spawnerGeneratePositions = { new Coords(1, 1), new Coords(8, 1), new Coords(1, 10), new Coords(8, 10) };
-    private bool isTesting = true;
+    private bool isTesting = false;
     
     void Start() {
 

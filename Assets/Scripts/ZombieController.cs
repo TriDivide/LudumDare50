@@ -28,6 +28,18 @@ public class ZombieController : MonoBehaviour {
         HandleMovement();
     }
 
+    private void FixedUpdate() {
+        Vector3 position = transform.position;
+
+        if (position.x > Pathfinding.Instance.GetGrid().GetWidth() || position.x < 1) {
+            Destroy(gameObject);
+        }
+
+        if (position.y > Pathfinding.Instance.GetGrid().GetHeight() || position.y < 1) {
+            Destroy(gameObject);
+        }
+    }
+
 
     public void SetTargetPosition(Vector3 targetPosition) {
         currentPathIndex = 0;

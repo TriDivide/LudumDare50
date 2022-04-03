@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
 
-        Invoke("Despawn", 5f);
+        Invoke("Despawn", 2f);
     }
 
     
