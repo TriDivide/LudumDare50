@@ -17,11 +17,26 @@ public class ZombieController : MonoBehaviour {
     private int currentPathIndex;
     private List<Vector3> pathVectorList;
 
+    private int cellSize;
+
 
 
     void Start() {
+        cellSize = Pathfinding.Instance.GetGrid().GetCellSize();
+        SearchForPickup();
+    }
 
-        SetTargetPosition(new Vector3(0, 0, 0));
+    private void SearchForPickup() {
+        GameObject[] weights = GameObject.FindGameObjectsWithTag("Equipment");
+        if (weights.Length != 0) {
+            GameObject weight = weights[Random.Range(0, weights.Length - 1)];
+            Vector3 weightPos = weight.transform.position;
+
+            SetTargetPosition(weightPos);
+        }
+        else {
+            SetTargetPosition(new Vector3(5, 6, 0));
+        }
     }
 
     private void Update() {
@@ -55,6 +70,18 @@ public class ZombieController : MonoBehaviour {
 
     private void StopMoving() {
         pathVectorList = null;
+
+        if(isCarryingEquipment) {
+            Destroy(gameObject);
+        }
+        else {
+            SearchForPickup();
+        }
+    }
+
+    private void GoToDespawn() {
+        pathVectorList = null;
+        SetTargetPosition(new Vector3(0, 0, 0));
     }
 
     private void HandleMovement() {
@@ -82,6 +109,7 @@ public class ZombieController : MonoBehaviour {
             if (!isCarryingEquipment) {
                 isCarryingEquipment = true;
                 Destroy(collision.gameObject);
+                GoToDespawn();
             }
         }
         // interacted with a bullet.
@@ -99,6 +127,18 @@ public class ZombieController : MonoBehaviour {
                 zombieHealth -= 6;
                 Destroy(collision.gameObject);
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.gameObject.tag == "Zombie") {
+            Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider.gameObject.GetComponent<BoxCollider2D>());
+        }
+        if (collision.collider.gameObject.tag == "Wall") {
+            Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider.gameObject.GetComponent<BoxCollider2D>());
+        }
+        if (collision.collider.gameObject.tag == "WallContainer") {
+            Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider.gameObject.GetComponent<CompositeCollider2D>());
         }
     }
 

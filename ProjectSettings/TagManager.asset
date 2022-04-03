@@ -12,6 +12,8 @@ TagManager:
   - Room
   - Zombie
   - SpawnManager
+  - Wall
+  - WallContainer
   layers:
   - Default
   - TransparentFX
