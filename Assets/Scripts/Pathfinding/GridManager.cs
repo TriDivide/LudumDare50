@@ -37,7 +37,7 @@ public class GridManager : MonoBehaviour {
 
         // Generate the weights in the right place.
         foreach(Coords pos in weightGeneratePositions) {
-            GameObject _ = Instantiate(weight, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
+            Instantiate(weight, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
         }
 
         // Generate the walls
@@ -52,8 +52,11 @@ public class GridManager : MonoBehaviour {
 
         // Generate Spawners
         foreach(Coords pos in spawnerGeneratePositions) {
-            GameObject _ = Instantiate(spawner, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
+            Instantiate(spawner, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
         }
+
+        //Spawn the player
+        Instantiate(player, new Vector3((5 * size) + (size / 2), (6 * size) + (size / 2), -10), Quaternion.Euler(0, 0, 0));
 
         //find the spawn manager and begin the spawning now we have generated spawners.
         GameObject spawnManager = GameObject.FindGameObjectWithTag("SpawnManager");
