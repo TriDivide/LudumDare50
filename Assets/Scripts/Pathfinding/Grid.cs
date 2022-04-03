@@ -99,6 +99,10 @@ public class Grid<TGridObject> {
         }
     }
 
+    public TGridObject[,] GetAllGridObjects() {
+        return gridArray;
+    }
+
     public TGridObject GetGridObject(Vector3 worldPosition) {
         int x, y;
         GetXY(worldPosition, out x, out y);

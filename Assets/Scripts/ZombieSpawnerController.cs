@@ -18,8 +18,9 @@ public class ZombieSpawnerController : MonoBehaviour
 
 
     private void SpawnZombie() {
-        if(this.spawners != null) {
-            GameObject spawner = this.spawners[Random.Range(0, spawners.Length)];
+        if(this.spawners.Length > 0) {
+            Debug.Log(this.spawners.Length);
+            GameObject spawner = this.spawners[Random.Range(0, spawners.Length - 1)];
 
             Instantiate(zombie, spawner.transform.position, spawner.transform.rotation);
         }

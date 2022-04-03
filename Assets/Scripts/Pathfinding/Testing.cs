@@ -6,9 +6,38 @@ public class Testing : MonoBehaviour {
 
     private Pathfinding pathfinding;
 
+    [SerializeField]
+    private int spawnX = -1, spawnY = -1;
+
+    public GameObject spawner;
+
+    private bool hasSpawned = false;
+
     void Start() {
 
         pathfinding = new Pathfinding(10, 10);
+
+
+        if (spawnX > -1 && spawnY > -1) {
+            Grid<PathNode> grid = pathfinding.GetGrid();
+            PathNode[,] cells = grid.GetAllGridObjects();
+            float size = grid.GetCellSize();
+            for (int x = 0; x < cells.GetLength(0); x++) {
+                for (int y = 0; y < cells.GetLength(1); y++) {
+                    if (x == spawnX && y == spawnY) {
+                        GameObject _ = Instantiate(spawner, new Vector3(x * size, y * size, 0), Quaternion.Euler(0, 0, 0));
+                        hasSpawned = true;
+                        break;
+                    }
+                }
+                if (hasSpawned) {
+                    break;
+                }
+            }
+
+        }
+
+
     }
 
     void Update() {
