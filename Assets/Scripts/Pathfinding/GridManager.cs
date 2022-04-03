@@ -19,11 +19,19 @@ public class GridManager : MonoBehaviour {
     private GameObject spawner, wall, weight, wallContainer, player;
 
     private Coords[] weightGeneratePositions = { new Coords(3,3), new Coords(3,4), new Coords(3,5), new Coords(4,8), new Coords(5,8), new Coords(6,8) };
-    private Coords[] wallGeneratePositions = { };
+    
+    private Coords[] wallGeneratePositions = { new Coords(2,2), new Coords(3,2), new Coords(5,2), new Coords(6,2), 
+                                                new Coords(2,3), new Coords(6,3),new Coords(7,3),
+                                                new Coords(2,4), new Coords(7,4),
+                                                new Coords(2,5), new Coords(7,5),
+                                                new Coords(2,6), new Coords(3,6),
+                                                new Coords(3,7), new Coords(7,7),
+                                                new Coords(3,8), new Coords(7,8),
+                                                new Coords(3,9), new Coords(4,9), new Coords(5,9), new Coords(6,9), new Coords(7,9)};
 
     private bool hasSpawned = false;
 
-    private bool isTesting = false;
+    private bool isTesting = true;
     
     void Start() {
 
@@ -57,7 +65,14 @@ public class GridManager : MonoBehaviour {
         }
 
         // Generate the walls
-
+        foreach (Coords pos in wallGeneratePositions) {
+            GameObject wallObj = Instantiate(wall, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
+            
+            wallObj.transform.parent = wallContainer.transform;
+            //Make sure ai cant go through walls.
+            pathfinding.GetGrid().GetXY(new Vector3((pos.X * size), (pos.Y * size), 0), out int x, out int y);
+            pathfinding.GetNode(x, y).SetIsWalkable(false);
+        }
 
 
     }

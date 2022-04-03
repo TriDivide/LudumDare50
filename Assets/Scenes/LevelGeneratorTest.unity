@@ -272,26 +272,6 @@ PrefabInstance:
       value: RoomManager
       objectReference: {fileID: 0}
     - target: {fileID: 4914998140888667307, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1011513562452744802, guid: 09bad8e348caf014f9b7f044d1ac9ea7, type: 3}
-    - target: {fileID: 4914998140888667307, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
-      propertyPath: spawnX
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4914998140888667307, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
-      propertyPath: spawnY
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4914998140888667307, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
-      propertyPath: weight
-      value: 
-      objectReference: {fileID: 1639869824230074403, guid: e8e39ae0bb059604988a4e42fe9efcf9, type: 3}
-    - target: {fileID: 4914998140888667307, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
-      propertyPath: gridSizeY
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4914998140888667307, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
       propertyPath: wallContainer
       value: 
       objectReference: {fileID: 748024253}

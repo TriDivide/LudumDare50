@@ -43,6 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6b36b7b0bcf414bbbfe0a766b5e90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnX: 6
-  spawnY: 8
+  spawnX: -1
+  spawnY: -1
+  gridSizeX: 10
+  gridSizeY: 12
+  cellSize: 1
   spawner: {fileID: 4109541160536095595, guid: 690d5d5d5f99c3349acfe8e39d4b19df, type: 3}
+  wall: {fileID: 2790134814157854530, guid: cc2bb3fd34fab704fac39815134c7df3, type: 3}
+  weight: {fileID: 1639869824230074403, guid: e8e39ae0bb059604988a4e42fe9efcf9, type: 3}
+  wallContainer: {fileID: 0}
+  player: {fileID: 1011513562452744802, guid: 09bad8e348caf014f9b7f044d1ac9ea7, type: 3}
