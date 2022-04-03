@@ -43,8 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6b36b7b0bcf414bbbfe0a766b5e90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnX: -1
-  spawnY: -1
   gridSizeX: 10
   gridSizeY: 12
   cellSize: 1

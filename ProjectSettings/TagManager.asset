@@ -11,6 +11,7 @@ TagManager:
   - Equipment
   - Room
   - Zombie
+  - SpawnManager
   layers:
   - Default
   - TransparentFX

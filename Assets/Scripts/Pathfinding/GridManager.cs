@@ -7,9 +7,6 @@ public class GridManager : MonoBehaviour {
     private Pathfinding pathfinding;
 
     [SerializeField]
-    private int spawnX = -1, spawnY = -1;
-
-    [SerializeField]
     private int gridSizeX = 10, gridSizeY = 10;
 
     [SerializeField]
@@ -29,8 +26,7 @@ public class GridManager : MonoBehaviour {
                                                 new Coords(3,8), new Coords(7,8),
                                                 new Coords(3,9), new Coords(4,9), new Coords(5,9), new Coords(6,9), new Coords(7,9)};
 
-    private bool hasSpawned = false;
-
+    private Coords[] spawnerGeneratePositions = { new Coords(1, 1), new Coords(8, 1), new Coords(1, 10), new Coords(8, 10) };
     private bool isTesting = true;
     
     void Start() {
@@ -39,26 +35,6 @@ public class GridManager : MonoBehaviour {
         Grid<PathNode> grid = pathfinding.GetGrid();
         float size = grid.GetCellSize();
 
-
-        // Spawn Spawners
-        if (spawnX > -1 && spawnY > -1) {
-            PathNode[,] cells = grid.GetAllGridObjects();
-            for (int x = 0; x < cells.GetLength(0); x++) {
-                for (int y = 0; y < cells.GetLength(1); y++) {
-                    if (x == spawnX && y == spawnY) {
-                        GameObject _ = Instantiate(spawner, new Vector3(x * size, y * size, 0), Quaternion.Euler(0, 0, 0));
-                        hasSpawned = true;
-                        break;
-                    }
-                }
-                if (hasSpawned) {
-                    break;
-                }
-            }
-
-        }
-
-        
         // Generate the weights in the right place.
         foreach(Coords pos in weightGeneratePositions) {
             GameObject _ = Instantiate(weight, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
@@ -74,8 +50,16 @@ public class GridManager : MonoBehaviour {
             pathfinding.GetNode(x, y).SetIsWalkable(false);
         }
 
+        // Generate Spawners
+        foreach(Coords pos in spawnerGeneratePositions) {
+            GameObject _ = Instantiate(spawner, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
+        }
 
-    }
+        //find the spawn manager and begin the spawning now we have generated spawners.
+        GameObject spawnManager = GameObject.FindGameObjectWithTag("SpawnManager");
+        ZombieSpawnerController spawnController = spawnManager.GetComponent(typeof(ZombieSpawnerController)) as ZombieSpawnerController;
+        if (spawnController != null) { spawnController.startSpawning(); }
+    }   
 
     void Update() {
         if (isTesting) {
