@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class ZombieController : MonoBehaviour {
 
-    private bool startMovement = true;
-    private bool doMove = true;
-    private Vector2 moveDirection;
-    private Direction lastMovementDirection;
+
     public float movementSpeed = 5f;
     public float movingDuration = 0.5f;
     public Rigidbody2D rigidBody; 
@@ -17,65 +14,53 @@ public class ZombieController : MonoBehaviour {
 
     public GameObject equipment;
 
+    // Used for pathfinding
+    private int currentPathIndex;
+    private List<Vector3> pathVectorList;
+
 
 
     void Start() {
-        Move();    
+
+        SetTargetPosition(new Vector3(0, 0, 0));
     }
 
-    private void Move() {
-        if (startMovement) {
-            startMovement = false;
-            StartCoroutine(Movement());
+    private void Update() {
+        HandleMovement();
+    }
+
+
+    public void SetTargetPosition(Vector3 targetPosition) {
+        currentPathIndex = 0;
+        pathVectorList = Pathfinding.Instance.FindPath(GetPosition(), targetPosition);
+        if (pathVectorList != null && pathVectorList.Count > 1) {
+            pathVectorList.RemoveAt(0);
         }
     }
 
-    IEnumerator Movement() {
-        while (1 > 0) {
-            float elapsedTime = 0f;
+    public Vector3 GetPosition() {
+        return transform.position;
+    }
 
-            int movement = Random.Range(0, 3);
-            Direction lmd = (Direction)movement;
+    private void StopMoving() {
+        pathVectorList = null;
+    }
 
-            while (lmd == lastMovementDirection) {
-                int m = Random.Range(0, 3);
-                lmd = (Direction)m;
-                yield return null;
-            }
+    private void HandleMovement() {
+        if (pathVectorList != null) {
+            Vector3 targetPosition = pathVectorList[currentPathIndex];
+            if (Vector3.Distance(transform.position, targetPosition) > 1f) {
+                Vector3 moveDir = (targetPosition - transform.position).normalized;
 
-            lastMovementDirection = lmd;
-
-            if (doMove) {
-                switch (lastMovementDirection) {
-                    case Direction.Left: { moveDirection = new Vector2(-1, 0).normalized; break; }
-                    case Direction.Right: { moveDirection = new Vector2(1, 0).normalized; break; }
-                    case Direction.Up: { moveDirection = new Vector2(0, 1).normalized; break; }
-                    case Direction.Down: { moveDirection = new Vector2(0, -1).normalized; break; }
-                }
-
-                while (elapsedTime < movingDuration) {
-                    
-                    
-                    rigidBody.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
-                    elapsedTime += Time.deltaTime;
-                    yield return null;
-                }
-
-                doMove = false;
-
-            }
+                float distanceBefore = Vector3.Distance(transform.position, targetPosition);
+                transform.position = transform.position + moveDir * movementSpeed * Time.deltaTime;
+            } 
             else {
-
-                while (elapsedTime < stationaryDuration) {
-                    rigidBody.velocity = new Vector2(0, 0);
-                    elapsedTime += Time.deltaTime;
-                    yield return null;
+                currentPathIndex++;
+                if (currentPathIndex >= pathVectorList.Count) {
+                    StopMoving();
                 }
-                doMove = true;
-            }
-
-
-            yield return null;
+            } 
         }
     }
 
@@ -84,7 +69,6 @@ public class ZombieController : MonoBehaviour {
             if(isCarryingEquipment && equipment != null) {
                 print("instantiate");
                 GameObject _ = Instantiate(equipment, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, 0));
-                //Instantiate(equipment, this.gameObject.transform);
             }
             Destroy(collision.collider.gameObject); 
             Destroy(gameObject);
