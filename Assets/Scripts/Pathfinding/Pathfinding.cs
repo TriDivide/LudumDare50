@@ -66,13 +66,11 @@ public class Pathfinding {
 
         while (openList.Count > 0) {
             PathNode currentNode = GetLowestFCostNode(openList);
-            Debug.Log("check");
             if (currentNode == endNode) {
                 // Reached final node
                 return CalculatePath(endNode);
             }
 
-            Debug.Log("We do get past final node.");
 
             openList.Remove(currentNode);
             closedList.Add(currentNode);
@@ -98,7 +96,6 @@ public class Pathfinding {
             }
         }
 
-        Debug.Log("Path is impossible");
         // Out of nodes on the openList
         return null;
     }

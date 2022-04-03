@@ -42,7 +42,6 @@ public class RoomGenerationManager : MonoBehaviour {
 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("Left click");
             Vector3 mouseWorldPosition = GetMouseWorldPosition();
             pathfinding.GetGrid().GetXY(mouseWorldPosition, out int x, out int y);
             List<PathNode> path = pathfinding.FindPath(0, 0, x, y);
@@ -54,7 +53,6 @@ public class RoomGenerationManager : MonoBehaviour {
         }
 
         if (Input.GetMouseButtonDown(1)) {
-            Debug.Log("Right Click");
             Vector3 mouseWorldPosition = GetMouseWorldPosition();
             pathfinding.GetGrid().GetXY(mouseWorldPosition, out int x, out int y);
             pathfinding.GetNode(x, y).SetIsWalkable(!pathfinding.GetNode(x, y).isWalkable);

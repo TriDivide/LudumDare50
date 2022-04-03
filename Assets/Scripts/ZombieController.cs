@@ -6,13 +6,12 @@ public class ZombieController : MonoBehaviour {
 
 
     public float movementSpeed = 5f;
-    public float movingDuration = 0.5f;
     public Rigidbody2D rigidBody; 
-    public float stationaryDuration = 1f;
 
     public bool isCarryingEquipment = false;
-
     public GameObject equipment;
+
+    public float zombieHealth = 10f;
 
     // Used for pathfinding
     private int currentPathIndex;
@@ -64,21 +63,26 @@ public class ZombieController : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.GetType() == typeof(BoxCollider2D) && collision.collider.gameObject.tag == "Bullet") {
-            if(isCarryingEquipment && equipment != null) {
-                print("instantiate");
-                GameObject _ = Instantiate(equipment, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, 0));
-            }
-            Destroy(collision.collider.gameObject); 
-            Destroy(gameObject);
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (!isCarryingEquipment) {
-            if (collision.GetType() == typeof(CircleCollider2D) && collision.gameObject.tag == "Equipment") {
+        // tapped a pickup 
+        if (collision.GetType() == typeof(CircleCollider2D) && collision.gameObject.tag == "Equipment") {
+            if (!isCarryingEquipment) {
                 isCarryingEquipment = true;
+                Destroy(collision.gameObject);
+            }
+        }
+        // interacted with a bullet.
+        if (collision.GetType() == typeof(BoxCollider2D) && collision.gameObject.tag == "Bullet") {
+            if (zombieHealth < 0) {
+                if (isCarryingEquipment && equipment != null) {
+                    GameObject _ = Instantiate(equipment, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, 0));
+                }
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+            }
+            else {
+                zombieHealth -= 6;
                 Destroy(collision.gameObject);
             }
         }
