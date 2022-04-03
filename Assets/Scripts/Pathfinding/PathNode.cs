@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PathNode : MonoBehaviour {
+public class PathNode {
     
     private Grid<PathNode> grid;
     public int x;
