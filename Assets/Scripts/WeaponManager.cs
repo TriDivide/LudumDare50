@@ -25,8 +25,6 @@ public class WeaponManager : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        print("interacted with object");
-        print(collision.gameObject.tag);
         if (collision.gameObject.tag == "Ammo") {
             GameObject ammo = collision.gameObject;
             addAmmo(ammo.GetComponent<AmmoManager>().ammoValue);
@@ -36,12 +34,10 @@ public class WeaponManager : MonoBehaviour {
 
     public void addAmmo(int amount) {
         ammoCount += amount;
-        print(ammoCount);
     }
 
     public void removeAmmo(int amount) {
         ammoCount -= amount;
-        print(ammoCount);
     }
 
 
