@@ -5,29 +5,36 @@ using UnityEngine.SceneManagement;
 
 public class GymEquipmentManager: MonoBehaviour {
 
-    private int totalEquipmentCount = 1;
+    private int totalEquipmentCount = 6;
 
+    private bool hasLoaded = false;
     void Start() {
+
         totalEquipmentCount = GameObject.FindGameObjectsWithTag("Equipment").Length;
+
+        hasLoaded = true;
+
     }
 
 
     private void FixedUpdate() {
-        GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");
 
-        int zombieCount = 0;
-        foreach(GameObject zombie in zombies) {
-            if (zombie.GetComponent<ZombieController>().isCarryingEquipment) {
-                zombieCount += 1;
+        if (hasLoaded) {
+            GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");
+
+            int zombieCount = 0;
+            foreach (GameObject zombie in zombies) {
+                if (zombie.GetComponent<ZombieController>().isCarryingEquipment) {
+                    zombieCount += 1;
+                }
+            }
+
+            int currentEquipmentCount = GameObject.FindGameObjectsWithTag("Equipment").Length;
+
+
+            if (zombieCount + currentEquipmentCount == 0) {
+                SceneManager.LoadScene("GameOver");
             }
         }
-
-        int currentEquipmentCount = GameObject.FindGameObjectsWithTag("Equipment").Length;
-
-
-        if (totalEquipmentCount > zombieCount + currentEquipmentCount) {
-            SceneManager.LoadScene("GameOver");
-        }
-
     }
 }

@@ -40,6 +40,9 @@ public class GridManager : MonoBehaviour {
             Instantiate(weight, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
         }
 
+        // Once the weights have been generated then enable the equipmentManager to keep track of them.
+        gameObject.GetComponent<GymEquipmentManager>().enabled = true;
+
         // Generate the walls
         foreach (Coords pos in wallGeneratePositions) {
             GameObject wallObj = Instantiate(wall, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
