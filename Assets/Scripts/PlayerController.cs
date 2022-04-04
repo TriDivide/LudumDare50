@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     private Vector2 moveDirection;
 
     public AudioSource noAmmoSound;
-
+    public AudioSource gunshot;
 
 
     // Start is called before the first frame update
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour {
             if (weaponManager.ammoCount > 0) {
                 weapon.Fire();
                 weaponManager.removeAmmo(1);
+                gunshot.Play();
             }
             else {
                 noAmmoSound.Play();

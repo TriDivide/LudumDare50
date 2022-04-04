@@ -7,13 +7,13 @@ public class ZombieSpawnerController : MonoBehaviour
 
     private GameObject[] spawners;
     public GameObject zombie;
-    public float spawnDelayEasy = 10f;
-    public float spawnDelayMed = 5f;
+    public float spawnDelayEasy = 5f;
+    public float spawnDelayMed = 3f;
     public float spawnDelayHard = 1f;
 
     public int currentZombieCount = 0;
 
-    private float spawnDelay = 10f;
+    private float spawnDelay = 5f;
 
     private Difficulty difficultyLevel = Difficulty.Easy;
     

@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour {
         }
 
         if (totalScoreText != null) {
-            totalScoreText.text = "You fended off: " + ScoreModel.Instance.score.ToString() + ". Well done.";
+            totalScoreText.text = "You fended off: " + ScoreModel.Instance.score.ToString() + " Zombros. Well done.";
         }
     }
 

@@ -149,6 +149,9 @@ public class ZombieController : MonoBehaviour {
         if (collision.collider.gameObject.tag == "WallContainer") {
             Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider.gameObject.GetComponent<CompositeCollider2D>());
         }
+        if (collision.collider.gameObject.tag == "Ammo") {
+            Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider.gameObject.GetComponent<BoxCollider2D>());
+        }
     }
 
 }

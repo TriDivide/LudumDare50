@@ -19,6 +19,9 @@ public class WeaponManager : MonoBehaviour {
 
     public Text ammoText;
 
+    public AudioSource reloadSound;
+
+
     private void Start() {
         ammoCount = 20;
     }
@@ -27,6 +30,7 @@ public class WeaponManager : MonoBehaviour {
         if (collision.gameObject.tag == "Ammo") {
             GameObject ammo = collision.gameObject;
             addAmmo(ammo.GetComponent<AmmoManager>().ammoValue);
+            reloadSound.Play();
             Destroy(ammo);
         }
     }
