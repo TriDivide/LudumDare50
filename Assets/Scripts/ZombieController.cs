@@ -22,6 +22,8 @@ public class ZombieController : MonoBehaviour {
 
 
 
+
+
     void Start() {
         SearchForPickup();
     }

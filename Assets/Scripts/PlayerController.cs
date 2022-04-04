@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour {
     private Vector2 mousePosition;
     private Vector2 moveDirection;
 
-    
+    public AudioSource noAmmoSound;
+    public AudioSource shootSound;
 
 
 
@@ -46,8 +47,12 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0)) {
             if (weaponManager.ammoCount > 0) {
+                shootSound.Play();
                 weapon.Fire();
                 weaponManager.removeAmmo(1);
+            }
+            else {
+                noAmmoSound.Play();
             }
         }
 
