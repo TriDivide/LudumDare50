@@ -1,0 +1,1 @@
+new Coords(8,1), new Coords(2,2), new Coords(18,2), new Coords(18,9), new Coords(3,17), new Coords(18,17), new Coords(8,18)
