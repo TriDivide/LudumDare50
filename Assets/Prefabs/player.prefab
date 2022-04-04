@@ -355,7 +355,7 @@ MonoBehaviour:
   projectileOrigin: {fileID: 7727734575199610187}
   weaponManager: {fileID: 1011513562181590411}
   noAmmoSound: {fileID: 435758979}
-  gunshot: {fileID: 0}
+  gunshot: {fileID: 435758970}
 --- !u!114 &8157670996055902150
 MonoBehaviour:
   m_ObjectHideFlags: 0
