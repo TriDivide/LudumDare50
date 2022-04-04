@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HighScoreTable : MonoBehaviour {
 
@@ -22,6 +23,27 @@ public class HighScoreTable : MonoBehaviour {
 
             entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * i);
             entryTransform.gameObject.SetActive(true);
+
+            int rank = i + 1;
+
+            string rankString;
+            switch (rank) {
+            default:
+                rankString = rank + "TH"; break;
+                case 1:
+                    rankString = "1ST"; break;
+                case 2:
+                    rankString = "2ND"; break;
+                case 3:
+                    rankString = "3RD"; break;
+            }
+
+            int score = Random.Range(0, 1000);
+            string name = "AAA";
+
+            entryTransform.Find("PosText").GetComponent<Text>().text = rankString;
+            entryTransform.Find("NameText").GetComponent<Text>().text = name;    
+            entryTransform.Find("ScoreText").GetComponent<Text>().text = score.ToString();
         }
     }
 }
