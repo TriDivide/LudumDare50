@@ -34,13 +34,22 @@ public class ZombieSpawnerController : MonoBehaviour
         while (true) {
             yield return new WaitForSeconds(spawnDelay);
             if (ScoreModel.Instance.score > 30) {
+                SpawnSevenZombies();
+            }
+            if (ScoreModel.Instance.score > 25) {
+                SpawnSixZombies();
+            }
+            if (ScoreModel.Instance.score > 20) {
+                SpawnFiveZombies();
+            }
+            if (ScoreModel.Instance.score > 15) {
                 SpawnFourZombies();
             }
-            else if (ScoreModel.Instance.score > 20) {
+            else if (ScoreModel.Instance.score > 10) {
                 
                 SpawnThreeZombies();
             }
-            else if (ScoreModel.Instance.score > 10) {
+            else if (ScoreModel.Instance.score > 5) {
                 SpawnTwoZombies();
             }
             else {
@@ -64,7 +73,7 @@ public class ZombieSpawnerController : MonoBehaviour
 
 
     private void SpawnZombie() {
-        if (this.currentZombieCount < 20) {
+        if (this.currentZombieCount < 50) {
             if (this.spawners.Length > 0) {
                 GameObject spawner = this.spawners[Random.Range(0, spawners.Length - 1)];
 
@@ -103,12 +112,62 @@ public class ZombieSpawnerController : MonoBehaviour
         GameObject spawnerOne = this.spawners[0];
         GameObject spawnerTwo = this.spawners[1];
         GameObject spawnerThree = this.spawners[2];
-        GameObject spawnerFour = this.spawners[spawners.Length - 1];
+        GameObject spawnerFour = this.spawners[3];
 
         Instantiate(zombie, spawnerOne.transform.position, spawnerOne.transform.rotation);
         Instantiate(zombie, spawnerTwo.transform.position, spawnerTwo.transform.rotation);
         Instantiate(zombie, spawnerThree.transform.position, spawnerThree.transform.rotation);
         Instantiate(zombie, spawnerFour.transform.position, spawnerFour.transform.rotation);
+
+    }
+    private void SpawnFiveZombies() {
+        GameObject spawnerOne = this.spawners[0];
+        GameObject spawnerTwo = this.spawners[1];
+        GameObject spawnerThree = this.spawners[2];
+        GameObject spawnerFour = this.spawners[3];
+        GameObject spawnerFive = this.spawners[4];
+
+        Instantiate(zombie, spawnerOne.transform.position, spawnerOne.transform.rotation);
+        Instantiate(zombie, spawnerTwo.transform.position, spawnerTwo.transform.rotation);
+        Instantiate(zombie, spawnerThree.transform.position, spawnerThree.transform.rotation);
+        Instantiate(zombie, spawnerFour.transform.position, spawnerFour.transform.rotation);
+        Instantiate(zombie, spawnerFive.transform.position, spawnerFive.transform.rotation);
+
+    }
+    private void SpawnSixZombies() {
+        GameObject spawnerOne = this.spawners[0];
+        GameObject spawnerTwo = this.spawners[1];
+        GameObject spawnerThree = this.spawners[2];
+        GameObject spawnerFour = this.spawners[3];
+        GameObject spawnerFive = this.spawners[4];
+        GameObject spawnerSix = this.spawners[5];
+
+        Instantiate(zombie, spawnerOne.transform.position, spawnerOne.transform.rotation);
+        Instantiate(zombie, spawnerTwo.transform.position, spawnerTwo.transform.rotation);
+        Instantiate(zombie, spawnerThree.transform.position, spawnerThree.transform.rotation);
+        Instantiate(zombie, spawnerFour.transform.position, spawnerFour.transform.rotation);
+        Instantiate(zombie, spawnerFive.transform.position, spawnerFive.transform.rotation);
+        Instantiate(zombie, spawnerSix.transform.position, spawnerSix.transform.rotation);
+
+
+    }
+    private void SpawnSevenZombies() {
+        GameObject spawnerOne = this.spawners[0];
+        GameObject spawnerTwo = this.spawners[1];
+        GameObject spawnerThree = this.spawners[2];
+        GameObject spawnerFour = this.spawners[3];
+        GameObject spawnerFive = this.spawners[4];
+        GameObject spawnerSix = this.spawners[5];
+        GameObject spawnerSeven = this.spawners[6];
+
+        Instantiate(zombie, spawnerOne.transform.position, spawnerOne.transform.rotation);
+        Instantiate(zombie, spawnerTwo.transform.position, spawnerTwo.transform.rotation);
+        Instantiate(zombie, spawnerThree.transform.position, spawnerThree.transform.rotation);
+        Instantiate(zombie, spawnerFour.transform.position, spawnerFour.transform.rotation);
+        Instantiate(zombie, spawnerFive.transform.position, spawnerFive.transform.rotation);
+        Instantiate(zombie, spawnerSix.transform.position, spawnerSix.transform.rotation);
+        Instantiate(zombie, spawnerSeven.transform.position, spawnerSeven.transform.rotation);
+
 
     }
 
