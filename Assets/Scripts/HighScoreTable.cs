@@ -100,7 +100,6 @@ public class HighScoreTable : MonoBehaviour {
 
         // Save the updated list.
         string json = JsonUtility.ToJson(highscores);
-        Debug.Log(json);
         PlayerPrefs.SetString("highScoreTable", json);
         PlayerPrefs.Save();
     }
