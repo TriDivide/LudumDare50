@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour {
 
-    public Text scoreText;
+    public Text scoreText, totalScoreText;
 
     private ScoreModel model;
     ScoreManager() {
@@ -15,12 +15,19 @@ public class ScoreManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        scoreText.text = "Current Score: " + ScoreModel.Instance.score.ToString();
+        if (scoreText != null) {
+            scoreText.text = "Current Score: " + ScoreModel.Instance.score.ToString();
+        }
+
+        if (totalScoreText != null) {
+            totalScoreText.text = "You fended off: " + ScoreModel.Instance.score.ToString() + ". Well done.";
+        }
     }
 
     // Update is called once per frame
     void Update() {
-        scoreText.text = "Current Score: " + ScoreModel.Instance.score.ToString();
-
+        if (scoreText != null) {
+            scoreText.text = "Current Score: " + ScoreModel.Instance.score.ToString();
+        }
     }
 }

@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class WeaponManager : MonoBehaviour {
 
-
-    public AudioSource reloadSound;
-
-
     public int ammoCount { 
         get { 
             return _ammoCount; 
@@ -31,7 +27,6 @@ public class WeaponManager : MonoBehaviour {
         if (collision.gameObject.tag == "Ammo") {
             GameObject ammo = collision.gameObject;
             addAmmo(ammo.GetComponent<AmmoManager>().ammoValue);
-            reloadSound.Play();
             Destroy(ammo);
         }
     }
