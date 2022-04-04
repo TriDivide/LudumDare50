@@ -21,13 +21,16 @@ public class HighScoreTable : MonoBehaviour {
         highscoreEntryList = new List<HighscoreEntry>() {
             new HighscoreEntry{ score = 2122, name = "Jon" },
             new HighscoreEntry{ score = 4765, name = "Jord" },
+            new HighscoreEntry{ score = 1432, name = "Liam" },
             new HighscoreEntry{ score = 5423, name = "Ollie" },
             new HighscoreEntry{ score = 8765, name = "Chloe" },
-            new HighscoreEntry{ score = 1432, name = "Liam" },
+            
         };
 
         highscoreEntryTransformList = new List<Transform>();
-        foreach(HighscoreEntry highscoreEntry in highscoreEntryList) {
+
+        highscoreEntryList.Sort((x, y) => y.score.CompareTo(x.score));
+        foreach (HighscoreEntry highscoreEntry in highscoreEntryList) {
             CreateHighScoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
         }
     }
