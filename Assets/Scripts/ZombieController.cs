@@ -9,9 +9,11 @@ public class ZombieController : MonoBehaviour {
     public Rigidbody2D rigidBody; 
 
     public bool isCarryingEquipment = false;
-    public GameObject equipment;
 
     public float zombieHealth = 10f;
+
+    [SerializeField]
+    private GameObject ammo, equipment;
 
     // Used for pathfinding
     private int currentPathIndex;
@@ -104,9 +106,7 @@ public class ZombieController : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         // tapped a pickup 
         if (collision.GetType() == typeof(BoxCollider2D) && collision.gameObject.tag == "Equipment") {
-            Debug.Log("Tapped on an item");
             if (!isCarryingEquipment) {
-                Debug.Log("Pick up Item");
                 isCarryingEquipment = true;
                 Destroy(collision.gameObject);
                 GoToDespawn();
@@ -114,17 +114,24 @@ public class ZombieController : MonoBehaviour {
         }
         // interacted with a bullet.
         if (collision.GetType() == typeof(BoxCollider2D) && collision.gameObject.tag == "Bullet") {
-            if (zombieHealth < 0) {
+            if (zombieHealth <= 0) {
                 // Zombie is dead. 
                 if (isCarryingEquipment && equipment != null) {
                     GameObject _ = Instantiate(equipment, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, 0));
                 }
+
+                int spawnChance = Random.Range(0, 2);
+                Debug.Log(spawnChance);
+                if (spawnChance > 0) {
+                    GameObject _ = Instantiate(ammo, new Vector3(transform.position.x, transform.position.y, -2), Quaternion.Euler(0, 0, 0));
+                }
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
                 ScoreModel.Instance.SetScore(1);
+
             }
             else {
-                zombieHealth -= 6;
+                zombieHealth -= 10;
                 Destroy(collision.gameObject);
             }
         }

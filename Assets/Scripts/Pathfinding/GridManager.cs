@@ -13,7 +13,7 @@ public class GridManager : MonoBehaviour {
     private float cellSize = 1f;
 
     [SerializeField]
-    private GameObject spawner, wall, weight, wallContainer, player;
+    private GameObject spawner, wall, weight, wallContainer;
 
     private Coords[] weightGeneratePositions = { new Coords(3,3), new Coords(3,4), new Coords(3,5), new Coords(4,8), new Coords(5,8), new Coords(6,8) };
     
@@ -55,8 +55,9 @@ public class GridManager : MonoBehaviour {
             Instantiate(spawner, new Vector3((pos.X * size) + (size / 2), (pos.Y * size) + (size / 2), 0), Quaternion.Euler(0, 0, 0));
         }
 
-        //Spawn the player
-        Instantiate(player, new Vector3((5 * size) + (size / 2), (6 * size) + (size / 2), -10), Quaternion.Euler(0, 0, 0));
+        //Position the player
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = new Vector3((5 * size) + (size / 2), (6 * size) + (size / 2), -10);
 
         //find the spawn manager and begin the spawning now we have generated spawners.
         GameObject spawnManager = GameObject.FindGameObjectWithTag("SpawnManager");

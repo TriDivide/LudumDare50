@@ -21,7 +21,7 @@ public class WeaponManager : MonoBehaviour {
     public Text ammoText;
 
     private void Start() {
-        ammoCount = 10;
+        ammoCount = 20;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

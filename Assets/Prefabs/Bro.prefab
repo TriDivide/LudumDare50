@@ -122,8 +122,9 @@ MonoBehaviour:
   movementSpeed: 5
   rigidBody: {fileID: 2222782072628638851}
   isCarryingEquipment: 0
-  equipment: {fileID: 1639869824230074403, guid: e8e39ae0bb059604988a4e42fe9efcf9, type: 3}
   zombieHealth: 10
+  ammo: {fileID: 2799843362575299787, guid: 2ff6fdfd03a1d8745bc1061da78a2875, type: 3}
+  equipment: {fileID: 1639869824230074403, guid: e8e39ae0bb059604988a4e42fe9efcf9, type: 3}
 --- !u!61 &-4583842642212754332
 BoxCollider2D:
   m_ObjectHideFlags: 0
