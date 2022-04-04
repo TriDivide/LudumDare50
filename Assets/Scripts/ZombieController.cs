@@ -19,6 +19,8 @@ public class ZombieController : MonoBehaviour {
     private int currentPathIndex;
     private List<Vector3> pathVectorList;
 
+    public AudioSource spawnSound, deathSound, pickupSound;
+
 
 
 
@@ -93,6 +95,9 @@ public class ZombieController : MonoBehaviour {
                 Vector3 moveDir = (targetPosition - transform.position).normalized;
 
                 float distanceBefore = Vector3.Distance(transform.position, targetPosition);
+
+                float speed = isCarryingEquipment ? movementSpeed / 2 : movementSpeed;
+                
                 transform.position = transform.position + moveDir * movementSpeed * Time.deltaTime;
             } 
             else {
@@ -109,6 +114,7 @@ public class ZombieController : MonoBehaviour {
         // tapped a pickup 
         if (collision.GetType() == typeof(BoxCollider2D) && collision.gameObject.tag == "Equipment") {
             if (!isCarryingEquipment) {
+                pickupSound.Play();
                 isCarryingEquipment = true;
                 Destroy(collision.gameObject);
                 GoToDespawn();
@@ -118,6 +124,9 @@ public class ZombieController : MonoBehaviour {
         if (collision.GetType() == typeof(BoxCollider2D) && collision.gameObject.tag == "Bullet") {
             if (zombieHealth <= 0) {
                 // Zombie is dead. 
+                deathSound.Play();
+
+           
                 if (isCarryingEquipment && equipment != null) {
                     GameObject _ = Instantiate(equipment, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, 0));
                 }

@@ -31,6 +31,8 @@ public class GridManager : MonoBehaviour {
     
     void Start() {
 
+        
+
         pathfinding = new Pathfinding(gridSizeX, gridSizeY, cellSize);
         Grid<PathNode> grid = pathfinding.GetGrid();
         float size = grid.GetCellSize();

@@ -13,17 +13,20 @@ public class HealthController : MonoBehaviour {
 
     public double damage = 0.6;
 
-    void Start()
-    {
-        
-    }
+    public AudioSource painSound;
+    
 
     void FixedUpdate() {
         healthText.text = "Health: " + playerHealth.ToString("0");
 
         if (underAttack) {
             playerHealth -= damage;
+            if (!painSound.isPlaying) {
+                painSound.Play();
+            }
+
         }
+
 
         if (playerHealth <= 0) {
 
