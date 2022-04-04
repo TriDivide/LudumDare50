@@ -367,10 +367,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5079383129775392057, guid: 09bad8e348caf014f9b7f044d1ac9ea7, type: 3}
-      propertyPath: gunshot
-      value: 
-      objectReference: {fileID: 1416000630}
     - target: {fileID: 8305299573068775552, guid: 09bad8e348caf014f9b7f044d1ac9ea7, type: 3}
       propertyPath: healthText
       value: 
@@ -629,11 +625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &1416000630 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 435758970, guid: 09bad8e348caf014f9b7f044d1ac9ea7, type: 3}
-  m_PrefabInstance: {fileID: 245610768}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1530760084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4914998140888667284, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
