@@ -17,12 +17,10 @@ public class ZombieController : MonoBehaviour {
     private int currentPathIndex;
     private List<Vector3> pathVectorList;
 
-    private int cellSize;
 
 
 
     void Start() {
-        cellSize = Pathfinding.Instance.GetGrid().GetCellSize();
         SearchForPickup();
     }
 
@@ -105,8 +103,10 @@ public class ZombieController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         // tapped a pickup 
-        if (collision.GetType() == typeof(CircleCollider2D) && collision.gameObject.tag == "Equipment") {
+        if (collision.GetType() == typeof(BoxCollider2D) && collision.gameObject.tag == "Equipment") {
+            Debug.Log("Tapped on an item");
             if (!isCarryingEquipment) {
+                Debug.Log("Pick up Item");
                 isCarryingEquipment = true;
                 Destroy(collision.gameObject);
                 GoToDespawn();
