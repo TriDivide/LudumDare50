@@ -15,8 +15,16 @@ public class GridManager : MonoBehaviour {
     [SerializeField]
     private GameObject spawner, wall, weight, wallContainer;
 
-    private Coords[] weightGeneratePositions = { new Coords(3,3), new Coords(3,4), new Coords(3,5), new Coords(4,8), new Coords(5,8), new Coords(6,8) };
-    
+    private Coords[] weightGeneratePositions = {
+                    new Coords(11,3), new Coords(12,3), new Coords(14,3), new Coords(15,3), new Coords(9,5), 
+                    new Coords(9,6), new Coords(15,6), new Coords(15,7), new Coords(3,8), new Coords(3,9), 
+                    new Coords(3,10), new Coords(3,11), new Coords(15,12), new Coords(9,13), new Coords(15,13), 
+                    new Coords(9,14), new Coords(11,16), new Coords(12,16), new Coords(14,16), new Coords(15,16)
+    };
+
+    private Coords[] spawnerGeneratePositions = { new Coords(8, 1), new Coords(2, 2), new Coords(18, 2), new Coords(18, 9), new Coords(3, 17), new Coords(18, 17), new Coords(8, 18) };
+
+
     private Coords[] wallGeneratePositions = { new Coords(2,2), new Coords(3,2), new Coords(5,2), new Coords(6,2), 
                                                 new Coords(2,3), new Coords(6,3),new Coords(7,3),
                                                 new Coords(2,4), new Coords(7,4),
@@ -26,7 +34,7 @@ public class GridManager : MonoBehaviour {
                                                 new Coords(3,8), new Coords(7,8),
                                                 new Coords(3,9), new Coords(4,9), new Coords(5,9), new Coords(6,9), new Coords(7,9)};
 
-    private Coords[] spawnerGeneratePositions = { new Coords(8, 1), new Coords(2, 2), new Coords(18, 2), new Coords(18, 9), new Coords(3, 17), new Coords(18, 17), new Coords(8, 18) };
+    private Coords playerPos = new Coords(8, 10);
     private bool isTesting = false;
     
     void Start() {
@@ -62,7 +70,7 @@ public class GridManager : MonoBehaviour {
 
         //Position the player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = new Vector3((5 * size) + (size / 2), (6 * size) + (size / 2), -10);
+        player.transform.position = new Vector3((playerPos.X * size) + (size / 2), (playerPos.Y * size) + (size / 2), -10);
 
         //find the spawn manager and begin the spawning now we have generated spawners.
         GameObject spawnManager = GameObject.FindGameObjectWithTag("SpawnManager");
