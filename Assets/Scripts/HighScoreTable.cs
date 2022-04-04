@@ -26,7 +26,7 @@ public class HighScoreTable : MonoBehaviour {
             new HighscoreEntry{ score = 1432, name = "Liam" },
         };
 
-
+        highscoreEntryTransformList = new List<Transform>();
         foreach(HighscoreEntry highscoreEntry in highscoreEntryList) {
             CreateHighScoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
         }
@@ -37,8 +37,7 @@ public class HighScoreTable : MonoBehaviour {
 
         Transform entryTransform = Instantiate(entryTemplate, container);
         entryTransform.gameObject.SetActive(true);
-        RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-        Debug.Log(transformList.Count);
+        RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();        
         entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);
         entryTransform.gameObject.SetActive(true);
 
