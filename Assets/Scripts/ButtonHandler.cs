@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ButtonHandler : MonoBehaviour {
 
-    public void restartGame() {
+    public void RestartGame() {
         SceneManager.LoadScene(sceneName: "SampleScene");
+    }
+
+    public void StartGame() {
+        SceneManager.LoadScene(sceneName: "LevelGeneratorTest");
     }
 
 }
