@@ -5,12 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
 
-    public AudioSource gunshot;
+    //public AudioSource gunshot;
 
     // Start is called before the first frame update
     void Start() {
 
-        gunshot.Play();
+       // gunshot.Play();
         Invoke("Despawn", 2f);
     }
 
