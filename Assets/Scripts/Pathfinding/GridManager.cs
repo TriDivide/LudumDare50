@@ -25,14 +25,25 @@ public class GridManager : MonoBehaviour {
     private Coords[] spawnerGeneratePositions = { new Coords(8, 1), new Coords(2, 2), new Coords(18, 2), new Coords(18, 9), new Coords(3, 17), new Coords(18, 17), new Coords(8, 18) };
 
 
-    private Coords[] wallGeneratePositions = { new Coords(2,2), new Coords(3,2), new Coords(5,2), new Coords(6,2), 
-                                                new Coords(2,3), new Coords(6,3),new Coords(7,3),
-                                                new Coords(2,4), new Coords(7,4),
-                                                new Coords(2,5), new Coords(7,5),
-                                                new Coords(2,6), new Coords(3,6),
-                                                new Coords(3,7), new Coords(7,7),
-                                                new Coords(3,8), new Coords(7,8),
-                                                new Coords(3,9), new Coords(4,9), new Coords(5,9), new Coords(6,9), new Coords(7,9)};
+    private Coords[] wallGeneratePositions = {
+        new Coords(10,2), new Coords(11,2), new Coords(12,2), new Coords(13,2), new Coords(14,2), 
+        new Coords(15,2), new Coords(16,2), new Coords(10,3), new Coords(13,3), new Coords(16,3), 
+        new Coords(2,4), new Coords(3,4), new Coords(4,4), new Coords(5,4), new Coords(6,4), 
+        new Coords(7,4), new Coords(8,4), new Coords(9,4), new Coords(10,4), new Coords(13,4), 
+        new Coords(16,4), new Coords(10,5), new Coords(16,5), new Coords(10,6), new Coords(16,6), 
+        new Coords(2,7), new Coords(3,7), new Coords(4,7), new Coords(5,7), new Coords(6,7), 
+        new Coords(10,7), new Coords(16,7), new Coords(2,8), new Coords(5,8), new Coords(6,8), 
+        new Coords(10,8), new Coords(11,8), new Coords(12,8), new Coords(16,8), new Coords(2,9), 
+        new Coords(16,9), new Coords(2,10), new Coords(16,10), new Coords(2,11), new Coords(5,11), 
+        new Coords(6,11), new Coords(10,11), new Coords(11,11), new Coords(12,11), new Coords(16,11), 
+        new Coords(2,12), new Coords(3,12), new Coords(4,12), new Coords(5,12), new Coords(6,12), 
+        new Coords(10,12), new Coords(16,12), new Coords(10,13), new Coords(16,13), new Coords(10,14), 
+        new Coords(16,14), new Coords(2,15), new Coords(3,15), new Coords(4,15), new Coords(5,15), 
+        new Coords(6,15), new Coords(7,15), new Coords(8,15), new Coords(9,15), new Coords(10,15), 
+        new Coords(13,15), new Coords(16,15), new Coords(10,16), new Coords(13,16), new Coords(16,16), 
+        new Coords(10,17), new Coords(11,17), new Coords(12,17), new Coords(13,17), new Coords(14,17), 
+        new Coords(15,17), new Coords(16,17)
+    };
 
     private Coords playerPos = new Coords(8, 10);
     private bool isTesting = false;
