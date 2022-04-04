@@ -21,4 +21,8 @@ public class ButtonHandler : MonoBehaviour {
         SceneManager.LoadScene(sceneName: "StartScene");
     }
 
+    public void GoToHighscore() {
+        SceneManager.LoadScene(sceneName: "HighScoreScene");
+    }
+
 }
