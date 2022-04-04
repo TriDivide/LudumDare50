@@ -427,6 +427,14 @@ PrefabInstance:
       value: RoomManager
       objectReference: {fileID: 0}
     - target: {fileID: 4914998140888667307, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
+      propertyPath: gridSizeX
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914998140888667307, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
+      propertyPath: gridSizeY
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914998140888667307, guid: c23d2d460cfd30e4cb1dc43a62074f18, type: 3}
       propertyPath: wallContainer
       value: 
       objectReference: {fileID: 748024253}
