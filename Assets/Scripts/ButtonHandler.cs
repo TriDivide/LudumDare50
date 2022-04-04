@@ -6,15 +6,19 @@ using UnityEngine.SceneManagement;
 public class ButtonHandler : MonoBehaviour {
 
     public void RestartGame() {
-        SceneManager.LoadScene(sceneName: "LevelGeneratorTest");
+        SceneManager.LoadScene(sceneName: "Gameplay");
     }
 
     public void StartGame() {
-        SceneManager.LoadScene(sceneName: "LevelGeneratorTest");
+        SceneManager.LoadScene(sceneName: "Gameplay");
     }
 
     public void QuitGame() {
         Application.Quit();
+    }
+
+    public void GoHome() {
+        SceneManager.LoadScene(sceneName: "StartScene");
     }
 
 }
