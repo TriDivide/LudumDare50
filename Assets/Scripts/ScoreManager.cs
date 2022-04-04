@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour {
 
-    public Text scoreText, totalScoreText;
+    public Text scoreText, totalScoreText, flavourText;
 
-    private ScoreModel model;
     ScoreManager() {
-        model = new ScoreModel();
 
         ScoreModel.Instance.SetScore(0);
     }
@@ -22,6 +20,17 @@ public class ScoreManager : MonoBehaviour {
         if (totalScoreText != null) {
             totalScoreText.text = "You fended off: " + ScoreModel.Instance.score.ToString() + " Zombros. Well done.";
         }
+
+        if (flavourText != null) {
+            Debug.Log(ScoreModel.Instance.didDie);
+            if (ScoreModel.Instance.didDie) {
+                flavourText.text = "You died in the defence of your gym equipment, your name shall be remembered for all time by those seeking to build a world without zombros...";
+            }
+            else {
+                flavourText.text = "You let the zombros get away with your gym equipment. Now no one can exercise in the apocalypse in peace.";
+            }
+        }
+
     }
 
     // Update is called once per frame

@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class ScoreModel {
 
-    public static ScoreModel Instance { get; private set; }
+    public static ScoreModel Instance { get; private set; } = new ScoreModel();
 
 
     public int score { get; private set; }
-
+    public bool didDie { get; private set; }
     public ScoreModel() {
-        Instance = this;
-
         score = 0;
+        didDie = false;
+
     }
 
     public void SetScore(int updatedScore) {
         score += updatedScore;
+    }
+
+    public void hasDied() {
+        didDie = true;
     }
 
 

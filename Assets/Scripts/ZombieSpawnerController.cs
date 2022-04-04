@@ -24,7 +24,6 @@ public class ZombieSpawnerController : MonoBehaviour
     public void startSpawning() {
         this.spawners = GameObject.FindGameObjectsWithTag("Spawner");
 
-        //InvokeRepeating("SpawnZombie", 0f, spawnDelay);
 
         StartCoroutine(Spawning());
 
