@@ -16,34 +16,45 @@ public class HighScoreTable : MonoBehaviour {
         entryTemplate.gameObject.SetActive(false);
 
 
-        float templateHeight = 20f;
         for (int i = 0; i < 10; i++) {
-            Transform entryTransform = Instantiate(entryTemplate, entryContainer);
-            RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
 
-            entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * i);
-            entryTransform.gameObject.SetActive(true);
+        }
+    }
 
-            int rank = i + 1;
+    private void CreateHighScoreEntryTransform(HighscoreEntry highScoreEntry, Transform container, List<Transform> transformList) {
+        float templateHeight = 20f;
 
-            string rankString;
-            switch (rank) {
+        Transform entryTransform = Instantiate(entryTemplate, container);
+        RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
+
+        entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);
+        entryTransform.gameObject.SetActive(true);
+
+        int rank = transformList.Count + 1;
+
+        string rankString;
+        switch (rank) {
             default:
                 rankString = rank + "TH"; break;
-                case 1:
-                    rankString = "1ST"; break;
-                case 2:
-                    rankString = "2ND"; break;
-                case 3:
-                    rankString = "3RD"; break;
-            }
-
-            int score = Random.Range(0, 1000);
-            string name = "AAA";
-
-            entryTransform.Find("PosText").GetComponent<Text>().text = rankString;
-            entryTransform.Find("NameText").GetComponent<Text>().text = name;    
-            entryTransform.Find("ScoreText").GetComponent<Text>().text = score.ToString();
+            case 1:
+                rankString = "1ST"; break;
+            case 2:
+                rankString = "2ND"; break;
+            case 3:
+                rankString = "3RD"; break;
         }
+
+
+        entryTransform.Find("PosText").GetComponent<Text>().text = rankString;
+        entryTransform.Find("NameText").GetComponent<Text>().text = highScoreEntry.name;
+        entryTransform.Find("ScoreText").GetComponent<Text>().text = highScoreEntry.score.ToString();
+
+        transformList.Add(entryTransform);
+    } 
+
+    // Single highscore entry
+    private class HighscoreEntry {
+        public int score;
+        public string name;
     }
 }
