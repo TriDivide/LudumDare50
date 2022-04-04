@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Position
+  m_Text: 1
 --- !u!222 &486789252
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -356,6 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1430440043}
+  - component: {fileID: 1430440044}
   m_Layer: 5
   m_Name: HighScoreTable
   m_TagString: Untagged
@@ -389,6 +390,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.6087}
   m_SizeDelta: {x: 621.2247, y: 337.0178}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1430440044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430440042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09501527e0574234b840d277b732c4d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1484922250
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,10 +512,10 @@ RectTransform:
   m_Father: {fileID: 1430440043}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 69.9}
+  m_SizeDelta: {x: -622, y: -338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1547455240
 GameObject:
@@ -922,7 +935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1835519832}
   m_Layer: 5
-  m_Name: highScoreItemTemplate
+  m_Name: highScoreEntryTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -947,7 +960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 73.3}
+  m_AnchoredPosition: {x: 0, y: 2.7}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1954511097
@@ -1020,7 +1033,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Score
+  m_Text: 1222
 --- !u!222 &1954511100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1182,7 +1195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Name
+  m_Text: aaa
 --- !u!222 &2142450193
 CanvasRenderer:
   m_ObjectHideFlags: 0
