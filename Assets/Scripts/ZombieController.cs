@@ -96,9 +96,14 @@ public class ZombieController : MonoBehaviour {
 
                 float distanceBefore = Vector3.Distance(transform.position, targetPosition);
 
-                float speed = isCarryingEquipment ? movementSpeed / 2 : movementSpeed;
+                float speed = isCarryingEquipment ? movementSpeed * 0.7f : movementSpeed;
                 
-                transform.position = transform.position + moveDir * movementSpeed * Time.deltaTime;
+                transform.position = transform.position + moveDir * speed * Time.deltaTime;
+
+               
+                float angle = (Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg) - 90f;
+
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             } 
             else {
                 currentPathIndex++;
