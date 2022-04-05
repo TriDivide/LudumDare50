@@ -19,6 +19,10 @@ public class ScoreModel {
         score += updatedScore;
     }
 
+    public void reset() {
+        score = 0;
+        didDie = false;
+    }
     public void hasDied() {
         didDie = true;
     }

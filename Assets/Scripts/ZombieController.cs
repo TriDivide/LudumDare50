@@ -39,7 +39,7 @@ public class ZombieController : MonoBehaviour {
             SetTargetPosition(weightPos);
         }
         else {
-            SetTargetPosition(new Vector3(5, 6, 0));
+            SetTargetPosition(new Vector3(10, 10, 0));
         }
     }
 
